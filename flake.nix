@@ -29,7 +29,7 @@
         newcomputermodern
       ];
       fontPaths = pkgs.lib.concatMapStringsSep ":" (f: "${f}/share/fonts") fonts;
-      typst = pkgs.typst.withPackages (p: [ p.supercharged-hm ]);
+      typst = pkgs.typst.withPackages (p: [ p.charged-ieee ]);
     in
     {
       formatter.${system} = treefmtEval.config.build.wrapper;
