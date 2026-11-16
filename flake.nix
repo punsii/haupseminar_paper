@@ -29,6 +29,7 @@
         newcomputermodern
       ];
       fontPaths = pkgs.lib.concatMapStringsSep ":" (f: "${f}/share/fonts") fonts;
+      typst = pkgs.typst.withPackages (p: [ p.supercharged-hm ]);
     in
     {
       formatter.${system} = treefmtEval.config.build.wrapper;
@@ -36,7 +37,7 @@
       packages.${system}.default = pkgs.stdenvNoCC.mkDerivation {
         name = "rt3dgs-paper";
         src = ./.;
-        nativeBuildInputs = [ pkgs.typst ];
+        nativeBuildInputs = [ typst ];
         TYPST_FONT_PATHS = fontPaths;
         buildPhase = "typst compile paper.typ paper.pdf";
         installPhase = "install -Dm644 paper.pdf $out/paper.pdf";
