@@ -39,7 +39,7 @@
         src = ./.;
         nativeBuildInputs = [ typst ];
         TYPST_FONT_PATHS = fontPaths;
-        buildPhase = "typst compile main.typ paper.pdf";
+        buildPhase = "typst compile src/main.typ paper.pdf";
         installPhase = "install -Dm644 paper.pdf $out/paper.pdf";
       };
 
